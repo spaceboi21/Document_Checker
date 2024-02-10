@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="file"],
+input[type="text"],
+input[type="submit"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Adjust styling for submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for optional input fields */
+input[name="name"],
+input[name="cnic"],
+input[name="passport_number"] {
+    margin-top: 10px; /* Add margin to separate optional inputs */
+}
+
+/* Styling for result section */
+.result {
+    margin-top: 20px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+/* Styling for individual result items */
+.result-item {
+    margin-bottom: 10px;
+}
+
+.found {
+    color: green;
+}
+
+.not-found {
+    color: red;
+}

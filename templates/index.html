@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Files and Search String</h1>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="files" multiple><br>
+            
+            <!-- Add optional inputs for name, CNIC, and passport number -->
+            <input type="text" name="name" placeholder="Enter name (optional)"><br>
+            <input type="text" name="cnic" placeholder="Enter CNIC (optional)"><br>
+            <input type="text" name="passport_number" placeholder="Enter passport number (optional)"><br>
+            
+            <input type="submit" value="Upload and Search">
+        </form>
+        {% comment %} <div class="result">
+            <!-- Results will be displayed here -->
+            {% if results %}
+            {% for result in results %}
+                <p>{{ result[0] }}: {{ result[1] }}</p>
+                {% if result[2] %}
+                    <ul>
+                        {% for info in result[2] %}
+                            <li>{{ info }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            No files processed
+        {% endif %}
+        </div> {% endcomment %}
+    </div>
+</body>
+</html>
