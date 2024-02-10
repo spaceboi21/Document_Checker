@@ -13,4 +13,6 @@ This Flask application allows users to upload documents and perform Optical Char
 2. Install Flask and Doctr using pip:
    ```bash
    pip install flask
-   pip install doctr
+   pip install python-doctr
+   pip install "python-doctr[tf]"
+   pip install "python-doctr[torch]"
