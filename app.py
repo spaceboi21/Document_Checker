@@ -13,6 +13,29 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 app.config['RESULTS_FOLDER'] = 'results/'
 os.makedirs(app.config['RESULTS_FOLDER'], exist_ok=True)
 
+olevel_keywords = ["general certificate of education", "gce ordinary level", "o level"] 
+alevel_keywords = ["general certificate of education", "gce advanced level", "a level"]
+cnic_keywords = ["national identity card", "nadra", "cnic"]
+ielts_keywords = ["international english language testing system", "ielts", "british council"]
+sat_keywords = ["sat", "scholastic aptitude test", "college board"]
+
+def classify_document(text):
+    text = text.lower()  # Normalize for case-insensitive matching
+
+    if any(word in text for word in olevel_keywords):
+        return "O Levels Certificate"
+    elif any(word in text for word in alevel_keywords):
+        return "A Levels Certificate"
+    elif any(word in text for word in cnic_keywords):
+        return "CNIC"
+    elif any(word in text for word in ielts_keywords):
+        return "IELTS Score Certificate"
+    elif any(word in text for word in sat_keywords):
+        return "SAT Certificate"
+    else:
+        return "Unknown Document Type"
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -26,12 +49,12 @@ def upload_file():
     cnic = request.form.get('cnic', '').lower()
     passport_number = request.form.get('passport_number', '').lower()
 
-    files = request.files.getlist('files')
+    files = request.files.getlist('certificates[]')  # Key change here!
     results = []
 
     for file in files:
         if file.filename == '':
-            continue
+            continue  
 
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -59,7 +82,9 @@ def upload_file():
             result_info.append(f"Passport number found in:\n- {filename}")
 
         status = 'found' if found else 'not found'
-        results.append((filename, status, result_info))
+        document_type = classify_document(full_text)  
+        results.append((filename, status, result_info, document_type))
+
 
     response = "<br>".join([f"{filename}: {status}<br>{', <br>'.join(result_info)}\n" for filename, status, result_info in results])
     # return response if results else 'No files processed'

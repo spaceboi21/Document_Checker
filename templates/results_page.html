@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Results</title>
+    <style>
+     /* Basic styling */
+     .result {
+          margin-top: 20px;
+     }
+
+     .result h2 {
+         margin-bottom: 10px; 
+     }
+
+     .file-status {
+         margin-bottom: 15px;
+     }
+
+     .result ul {
+        margin-left: 20px; /* Indent the list */
+     }
+    </style>
 </head>
 <body>
-    <div class="result">
-        <!-- Results will be displayed here -->
-        {% if results %}
-        {% for result in results %}
-            <p>{{ result[0] }}: {{ result[1] }}</p>
-            {% if result[2] %}
-                <ul>
-                    {% for info in result[2] %}
-                        <li>{{ info }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        No files processed
-    {% endif %}
-    </div>
+    <div class="result">
+        <h2>Upload Results</h2> 
+        {% if results %}
+          {% for filename, status, result_info, doc_type in results %}
+            <div class="file-status">
+                <h3>{{ filename }}</h3>
+                <p><strong>Status:</strong> {{ status }}</p>
+                <p><strong>Document Type:</strong> {{ doc_type }}</p> 
+
+                {% if result_info %}
+                    <strong>Search Results:</strong>
+                     <ul>
+                        {% for info in result_info %}
+                            <li>{{ info }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %} 
+            </div> 
+        {% endfor %}
+        {% else %}
+            <p>No files processed</p>
+        {% endif %}
+    </div>
 </body>
 </html>
