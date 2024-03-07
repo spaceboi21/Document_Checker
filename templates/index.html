@@ -8,54 +8,73 @@
     <div class="container">
         <h1>Upload Files and Search String</h1>
 
-        <div class="upload-box">
-            <h3>O Levels Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+        <div class="upload-box">
+            <h3>O Levels Certificate</h3>
+            <input type="file" class="file-input" name="certificates[]" multiple> 
+        </div>
+
+        <div class="upload-box">
+            <h3>A Levels Certificate</h3>
+            <input type="file" class="file-input" name="certificates[]" multiple> 
+        </div>
 
         <div class="upload-box">
-            <h3>A Levels Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+            <h3>CNIC</h3>
+            <input type="file" class="file-input" name="certificates[]" multiple> 
+        </div>
 
-                <input type="text" name="name" placeholder="Enter name (optional)"><br>
+        <div class="upload-box">
+            <h3>IELTS Score Certificate</h3>
+            <input type="file" class="file-input" name="certificates[]" multiple> 
+        </div>
+
+        <div class="upload-box">
+            <h3>SAT Certificate</h3>
+            <input type="file" class="file-input" name="certificates[]" multiple> 
+        </div>
+
+        <input type="text" name="name" placeholder="Enter name (optional)"><br>
         <input type="text" name="cnic" placeholder="Enter CNIC (optional)"><br>
         <input type="text" name="passport_number" placeholder="Enter passport number (optional)"><br>
         
         <input type="submit" value="Upload and Search">
     </div>
 
-    <script>
-        const form = document.querySelector('form'); 
+    <script>
+        const form = document.querySelector('form');
         form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); // Prevent default form submission
 
-            const fileInputs = document.querySelectorAll('.file-input');
-            const formData = new FormData();
+        const fileInputs = document.querySelectorAll('.file-input');
+        const formData = new FormData();
 
-            fileInputs.forEach(input => {
-                for (const file of input.files) {
-                    formData.append('files', file); // Combine files using 'files' key
-                }
-            });
-
-            // Add other fields to formData 
-            formData.append('name', this.name.value); 
-            formData.append('cnic', this.cnic.value);
-            formData.append('passport_number', this.passport_number.value);
-            
-            // Send data using an AJAX call - example using fetch API
-            fetch('/upload', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                // ... Handle the response from your Flask app
-            })
-            .catch(error => {
-                // ... Handle errors
-            });
+        fileInputs.forEach(input => {
+            for (const file of input.files) {
+                formData.append('files', file); // Combine files using 'files' key
+            }
         });
-    </script>
+
+        // Add other fields to formData
+        formData.append('name', this.name.value);
+        formData.append('cnic', this.cnic.value);
+        formData.append('passport_number', this.passport_number.value);
+
+        // Send data using an AJAX call - example using fetch API
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            // Handle the response from your Flask app. 
+            // Example: Update a results section on the page
+            const resultsDiv = document.querySelector('.result'); 
+            resultsDiv.innerHTML = response.text(); // Assuming Flask returns HTML
+        })
+        .catch(error => {
+            console.error('Error:', error); 
+            // Handle errors (e.g., display an error message)
+        });
+    });
+    </script>
 </body>
 </html>

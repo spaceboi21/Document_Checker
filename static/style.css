@@ -36,7 +36,6 @@ input[type="submit"] {
     border-radius: 4px;
 }
 
-/* Adjust styling for submit button */
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -52,7 +51,12 @@ input[type="submit"]:hover {
 input[name="name"],
 input[name="cnic"],
 input[name="passport_number"] {
-    margin-top: 10px; /* Add margin to separate optional inputs */
+    margin-top: 10px;
+}
+
+/* Styling for upload boxes */
+.upload-box {
+    margin-bottom: 15px; /* Add spacing between boxes */
 }
 
 /* Styling for result section */
@@ -66,6 +70,11 @@ input[name="passport_number"] {
 /* Styling for individual result items */
 .result-item {
     margin-bottom: 10px;
+}
+
+.result-item h3 { /* Optional style for the file name */
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .found {
