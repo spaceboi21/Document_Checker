@@ -19,26 +19,29 @@ form.addEventListener('change', function(event) {
 });
 
 // Handle form submission
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent default form submission
-
-  const formData = new FormData(this); // 'this' refers to the form itself
-
-  // Send data using an AJAX call - example using fetch API
-  fetch('/upload', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
+form.addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent default form submission
+  
+    const formData = new FormData(this); // 'this' refers to the form itself
+  
+    try {
+      // Send data using an AJAX call - example using fetch API
+      const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
       // Handle the response from your Flask app.
-      return response.text();
-    })
-    .then(data => {
+      const data = await response.text();
+  
       const resultsDiv = document.querySelector('.result');
       resultsDiv.innerHTML = data; // Assuming Flask returns HTML
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error:', error);
       // Handle errors (e.g., display an error message)
-    });
-});
+    }
+  });
