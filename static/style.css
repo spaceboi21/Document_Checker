@@ -67,7 +67,7 @@ input[name="passport_number"] {
 /* Upload box styles */
 .upload-box {
     margin-bottom: 15px;
-    flex-basis: 45%;
+    flex-basis: 25%;
 }
 
 /* Result section styles */
