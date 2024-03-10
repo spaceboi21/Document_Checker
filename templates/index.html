@@ -7,37 +7,43 @@
 <body>
     <div class="container">
         <h1>Upload Files and Search String</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data"> <!-- Ensure correct action and method -->
+            <div class="upload-box">
+                <h3>O Levels Certificate</h3>
+                <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
+            
+            <div class="upload-box">
+                <h3>A Levels Certificate</h3>
+                <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
 
-        <div class="upload-box">
-            <h3>O Levels Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+            <div class="upload-box">
+                <h3>CNIC</h3>
+                <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
 
-        <div class="upload-box">
-            <h3>A Levels Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+            <div class="upload-box">
+                <h3>IELTS Score Certificate</h3>
+                <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
 
-        <div class="upload-box">
-            <h3>CNIC</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+            <div class="upload-box">
+                <h3>SAT Certificate</h3>
+                <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
 
-        <div class="upload-box">
-            <h3>IELTS Score Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
+            <div class="upload-box">
+                    <h3>Passport</h3>
+                    <input type="file" class="file-input" name="certificates[]" multiple> 
+            </div>
 
-        <div class="upload-box">
-            <h3>SAT Certificate</h3>
-            <input type="file" class="file-input" name="certificates[]" multiple> 
-        </div>
-
-        <input type="text" name="name" placeholder="Enter name (optional)"><br>
-        <input type="text" name="cnic" placeholder="Enter CNIC (optional)"><br>
-        <input type="text" name="passport_number" placeholder="Enter passport number (optional)"><br>
-        
-        <input type="submit" value="Upload and Search">
+            <input type="text" name="name" placeholder="Enter name (optional)"><br>
+            <input type="text" name="cnic" placeholder="Enter CNIC (optional)"><br>
+            <input type="text" name="passport_number" placeholder="Enter passport number (optional)"><br>
+            
+            <input type="submit" value="Upload and Search">
+        </form>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
