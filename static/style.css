@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -16,21 +17,23 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
-    /* Enable flexbox layout */
     flex-wrap: wrap;
-    /* Allow items to wrap */
     justify-content: space-around;
-    /* Distribute items with space around them*/
+    max-width: 800px; /* Added maximum width for better responsiveness */
 }
 
 h1 {
     color: #333;
+    margin-bottom: 20px; /* Added spacing below h1 */
 }
 
 form {
     margin-top: 20px;
+    max-width: 400px; /* Limit form width for better readability */
+    width: 100%; /* Ensure form takes full width */
 }
 
+/* Input styles */
 input[type="file"],
 input[type="text"],
 input[type="submit"] {
@@ -47,27 +50,27 @@ input[type="submit"] {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Styling for optional input fields */
+/* Optional input fields */
 input[name="name"],
 input[name="cnic"],
 input[name="passport_number"] {
     margin-top: 10px;
 }
 
-/* Styling for upload boxes */
+/* Upload box styles */
 .upload-box {
     margin-bottom: 15px;
     flex-basis: 45%;
-    /* Adjust percentage as needed */
 }
 
-/* Styling for result section */
+/* Result section styles */
 .result {
     margin-top: 20px;
     text-align: left;
@@ -75,17 +78,17 @@ input[name="passport_number"] {
     padding-top: 10px;
 }
 
-/* Styling for individual result items */
+/* Individual result item styles */
 .result-item {
     margin-bottom: 10px;
 }
 
 .result-item h3 {
-    /* Optional style for the file name */
     margin-bottom: 5px;
     font-weight: bold;
 }
 
+/* Found and not found styles */
 .found {
     color: green;
 }
