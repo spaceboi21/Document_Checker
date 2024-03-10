@@ -15,6 +15,12 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    display: flex;
+    /* Enable flexbox layout */
+    flex-wrap: wrap;
+    /* Allow items to wrap */
+    justify-content: space-around;
+    /* Distribute items with space around them*/
 }
 
 h1 {
@@ -56,7 +62,9 @@ input[name="passport_number"] {
 
 /* Styling for upload boxes */
 .upload-box {
-    margin-bottom: 15px; /* Add spacing between boxes */
+    margin-bottom: 15px;
+    flex-basis: 45%;
+    /* Adjust percentage as needed */
 }
 
 /* Styling for result section */
@@ -72,7 +80,8 @@ input[name="passport_number"] {
     margin-bottom: 10px;
 }
 
-.result-item h3 { /* Optional style for the file name */
+.result-item h3 {
+    /* Optional style for the file name */
     margin-bottom: 5px;
     font-weight: bold;
 }
