@@ -19,7 +19,7 @@ blis==0.7.9
 Brotli==1.1.0
 cachetools==5.3.3
 catalogue==2.0.8
-clyent==1.2.2
+clyent==1.2.1
 colorama==0.4.6
 conda-repo-cli==1.0.75
 conda-verify==3.4.2
