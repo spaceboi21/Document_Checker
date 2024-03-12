@@ -15,4 +15,4 @@ This Flask application allows users to upload documents and perform Optical Char
    pip install flask
    pip install python-doctr
    pip install "python-doctr[tf]"
-   pip install "python-doctr[torch]"
+   pip install "python-doctr[torch]"# WeAlif_doc_check
