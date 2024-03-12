@@ -13,7 +13,7 @@ app.config['RESULTS_FOLDER'] = 'results/'
 os.makedirs(app.config['RESULTS_FOLDER'], exist_ok=True)
 
 olevel_keywords = ["ordinary level", "o level"] 
-alevel_keywords = ["Advanced Subsidiary", "Advanced Level"]
+alevel_keywords = ["advanced subsidiary", "advanced Level"]
 cnic_keywords = ["national identity card", "nadra", "cnic"]
 ielts_keywords = ["international english language testing system", "ielts", "british council"]
 sat_keywords = ["sat", "scholastic aptitude test", "college board"]
