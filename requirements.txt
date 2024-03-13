@@ -1,5 +1,6 @@
 clearml
 defusedxml
+doctr
 fastapi
 Flask
 h5py
